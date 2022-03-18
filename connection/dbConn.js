@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // const { host, port, username, password, database } = require('../configs').mongoDb;
-const url = process.env.DATABASE_URL || "mongodb://database:27017/sites"
+const url = process.env.DATABASE_URL || "mongodb://localhost:27017/sites"
 
 module.exports = () => {
     let options = {
