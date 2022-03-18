@@ -17,8 +17,7 @@ const getSite = (req, res) => {
 };
 // Creating one
 const addSite = async (req, res) => {
-  let data = JSON.parse(req.body.body)
-  console.log(data)
+  let data = JSON.parse(req.body.meta)
   const newSite = new Site(data);
   newSite.basic.picture = req.file.path
   try {
