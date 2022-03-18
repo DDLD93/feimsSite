@@ -16,6 +16,6 @@ services:
     ports: 
       - "5500:5500" 
 volumes: 
-  siteVolume: 
-  sitePictures:
+    siteDb:
+    siteNode:
 
