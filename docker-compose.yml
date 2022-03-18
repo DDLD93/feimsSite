@@ -1,0 +1,21 @@
+version: '3'
+services: 
+  database:
+    image: mongo:4.4.12
+    ports: 
+      - "27017:27017"
+    restart: always 
+    volumes: 
+      - siteDb:/data/db 
+  node-api:
+    image: ujere/lexington:feims
+    volumes: 
+      - siteNode:/app
+    depends_on: 
+      - database
+    ports: 
+      - "5500:5500" 
+volumes: 
+  siteVolume: 
+  sitePictures:
+
