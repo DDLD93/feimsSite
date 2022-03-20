@@ -23,7 +23,7 @@ module.exports = () => {
     
     db.on('disconnect', () => {
         console.log('Oops we are disconnected from mongodb');
-        mongoose.connect(url, options);
+        mongoose.connect(url);
     });
     //const mongoDbUri = `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`;
     mongoose.connect(url);
