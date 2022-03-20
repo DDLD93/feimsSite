@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // const { host, port, username, password, database } = require('../configs').mongoDb;
-const url = process.env.DATABASE_URL || "mongodb://database:27017/sites"
+const url = process.env.DATABASE_URL || "mongodb://database:27017"
 
 module.exports = () => {
     let options = {
@@ -26,5 +26,5 @@ module.exports = () => {
         mongoose.connect(url, options);
     });
     //const mongoDbUri = `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`;
-    mongoose.connect(url, options);
+    mongoose.connect(url);
 }
