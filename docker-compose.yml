@@ -6,11 +6,11 @@ services:
       - "27017:27017"
     restart: always 
     volumes: 
-      - siteDb:/data/db 
+      - siteDb:/data/db/ 
   node-api:
     image: ujere/lexington:feims
     volumes: 
-      - siteNode:/app
+      - siteNode:/app/
     depends_on: 
       - database
     ports: 
