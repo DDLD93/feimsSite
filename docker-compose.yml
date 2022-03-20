@@ -4,8 +4,6 @@ services:
     image: ujere/lexington:feims
     volumes: 
       - siteNode:/app/
-    depends_on: 
-      - database
     ports: 
       - "5500:5500" 
 volumes: 
