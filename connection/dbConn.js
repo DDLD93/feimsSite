@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // const { host, port, username, password, database } = require('../configs').mongoDb;
-const url = process.env.DATABASE_URL || "mongodb://database:27017"
+const url = process.env.DATABASE_URL || "mongodb+srv://AuthService:16001105@cluster0.kbf3k.mongodb.net/sites?retryWrites=true&w=majority"
 
 module.exports = () => {
     let options = {
@@ -23,8 +23,8 @@ module.exports = () => {
     
     db.on('disconnect', () => {
         console.log('Oops we are disconnected from mongodb');
-        mongoose.connect(url);
+        mongoose.connect(url,options);
     });
     //const mongoDbUri = `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`;
-    mongoose.connect(url);
+    mongoose.connect(url,options);
 }

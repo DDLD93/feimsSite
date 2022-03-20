@@ -1,13 +1,6 @@
 version: '3'
 services: 
-  database:
-    image: mongo:4.4.12
-    ports: 
-      - "27017:27017"
-    restart: always 
-    volumes: 
-      - siteDb:/data/db/ 
-  node-api:
+  feims:
     image: ujere/lexington:feims
     volumes: 
       - siteNode:/app/
