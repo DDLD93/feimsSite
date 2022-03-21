@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // const { host, port, username, password, database } = require('../configs').mongoDb;
-const url = process.env.DATABASE_URL || "mongodb+srv://AuthService:16001105@cluster0.kbf3k.mongodb.net/sites?retryWrites=true&w=majority"
-
+//const url = process.env.DATABASE_URL || "mongodb+srv://AuthService:16001105@cluster0.kbf3k.mongodb.net/sites?retryWrites=true&w=majority"
+const url = "mongodb://localhost:27017"
 module.exports = () => {
     let options = {
         useNewUrlParser: true,

@@ -1,50 +1,62 @@
 const Site = require("../model/siteSchema");
 
-
 // Getting all
-const getSites = async (req, res) => {
+const getSites = async () => {
   try {
     const sites = await Site.find();
-    res.json(sites);
+    return sites;
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return err;
   }
 };
 
 // Getting One
-const getSite = (req, res) => {
-  res.json(res.site);
+const getSite = async (req) => {
+  let site = null;
+  try {
+    site = await Site.findById(req.params.id);
+    if (site == null) {
+      return { message: "Cannot find site" };
+    }
+    return site;
+  } catch (err) {
+    return err;
+  }
 };
+
 // Creating one
-const addSite = async (req, res) => {
-  let data = JSON.parse(req.body.meta)
+const addSite = async (req) => {
+  let data = JSON.parse(req.body.meta);
   const newSite = new Site(data);
-  newSite.basic.picture = req.file.path
+  newSite.basic.picture = req.file.path;
   try {
     const site = await newSite.save();
-    res.status(201).json(site);
+    return site;
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    return err;
   }
 };
 
 // Updating One
-const updateSite = async (req, res) => {
+const updateSite = async (req) => {
+  console.log(req.body.meta)
   try {
-    const updatedSite = await res.site.save();
-    res.json(updatedSite);
+    const updatedSite = await Site.findByIdAndUpdate(req.params.id, req.body.meta,(err,res)=>{
+      console.log("error.>>>>>>",err,  "response>>>>>>>",res)
+    });
+    return updatedSite;
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    return err;
   }
 };
 
 // Deleting One
-const deleteSite = async (req, res) => {
+const deleteSite = async (req) => {
   try {
-    await res.site.remove();
-    res.json({ message: "Deleted Sites" });
+    await Site.findByIdAndDelete(req.params.id);
+    return { message: "Deleted Sites" };
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return err;
   }
 };
 
