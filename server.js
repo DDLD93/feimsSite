@@ -1,18 +1,21 @@
-const express = require("express")
-require('./connection/dbConn')()
-require('dotenv').config()
+const UPLOADS = __dirname+'/uploads';
+require('./connection/dbConn')();
+const express = require("express");
+const cors = require('cors');
+require('dotenv').config();
+
 const app = express()
 const port = process.env.PORT || 5500
 
 
-
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 //intitializing body parser
 app.use(express.json())
 
 // connecting to database 
 
-app.use("/api/site", require("./routes/routes"))
+app.use("/api/site", require("./routes/site.route")(express,UPLOADS));
 
 
 app.listen(port,()=>{

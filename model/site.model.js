@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const siteSchema = new Schema({
   basic: {
-    siteName: { type: String },
-    siteCode: { type: Number },
-    siteAddress: { type: String },
-    siteArea: { type: Number },
+    name: { type: String },
+    code: { type: Number },
+    address: { type: String },
+    area: { type: Number },
     state: { type: String },
     lga: { type: String },
-    location: {
-      logtitude: { type: Number },
+    position: {
+      longitude: { type: Number },
       latittude: { type: Number },
     },
-    picture: { type: String },
+    image: { type: String },
   },
   gate: {
     size: { type: Number },
@@ -24,7 +24,7 @@ const siteSchema = new Schema({
   },
   fence: {
     height: { type: Number },
-    perimeter: { type: Number },
+    parimeter: { type: Number },
     concrateWork: { type: Number },
     blockWork: { type: Number },
     formWork: { type: Number },
