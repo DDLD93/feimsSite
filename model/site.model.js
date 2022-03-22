@@ -25,7 +25,7 @@ const siteSchema = new Schema({
   fence: {
     height: { type: Number },
     parimeter: { type: Number },
-    concrateWork: { type: Number },
+    concreteWork: { type: Number },
     blockWork: { type: Number },
     formWork: { type: Number },
     reinforcement: { type: Number },
@@ -60,13 +60,13 @@ const siteSchema = new Schema({
     surfaceDressing: { type: Number },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: ["Working ", "Not Working", "Repairable", "Obsolete"],
     },
   },
   drainage: {
     depth: { type: Number },
     length: { type: Number },
-    concrateWork: { type: Number },
+    concreteWork: { type: Number },
     blockWork: { type: Number },
     formWork: { type: Number },
     reinforcement: { type: Number },
@@ -77,7 +77,7 @@ const siteSchema = new Schema({
     },
   },
   electricity: {
-    pipingAccesories: { type: String },
+    pipingAccessories: { type: String },
     cable: { type: String },
     source: { type: String ,
       enum: ["Public", "Generator", "Solar","Turbine"],
@@ -88,7 +88,7 @@ const siteSchema = new Schema({
     },
   },
   water: {
-    pipingAccesories: { type: String },
+    pipingAccessories: { type: String },
     source: { type: String ,
       enum: ["Public", "Borehole", "Well","Dam"],
     },

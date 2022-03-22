@@ -1,11 +1,17 @@
 version: '3'
-services: 
+services:
+  database:
+    image: mongo:latest
+    ports: 
+      - "27017:27017" 
   feims:
     image: ujere/lexington:feims
+    depends_on:
+      - database
     volumes: 
       - siteNode:/app/
     ports: 
-      - "5500:5500" 
+      - "5500:5500"  
 volumes: 
     siteDb:
     siteNode:

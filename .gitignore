@@ -1,3 +1,8 @@
 /node_modules
 /package-lock.json
 /uploads
+.firebaserc
+firebase-debug.log
+/functions
+firebase.json
+

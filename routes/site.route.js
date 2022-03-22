@@ -46,6 +46,7 @@ module.exports = (express,UPLOADS)=>{
 
   api.post("/", upload.single('image'),async(req,res)=>{
     let data = JSON.parse(req.body.meta);
+    console.log(data)
     let status = await siteCtrl.addSite(data, req.filePath);
     if(status.ok){
       res.status(200).json(status.site);
