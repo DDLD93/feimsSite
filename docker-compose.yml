@@ -11,7 +11,7 @@ services:
     volumes: 
       - siteNode:/app/
     ports: 
-      - "5500:5500"  
+      - "80:5500"  
 volumes: 
     siteDb:
     siteNode:
