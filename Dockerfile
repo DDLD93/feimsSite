@@ -1,7 +1,16 @@
 FROM node:slim
-WORKDIR "/app"
-COPY ./package.json ./
+
+# Create app directory
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package.json /usr/src/app/
 RUN npm install
-COPY . .
-EXPOSE 5500
-CMD ["npm", "run", "dev"]
+
+# Bundle app source
+COPY . /usr/src/app
+
+EXPOSE 7700
+CMD [ "node", "server" ]

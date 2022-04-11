@@ -1,66 +1,105 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
+const conditionArr=["Working", "Not Working", "Repairable","Obsolete","Abandoned"];
+const damageArr=[0,25,50,75,100];
+
 const siteSchema = new Schema({
   basic: {
     name: { type: String },
-    code: { type: Number },
+    code: { type: String },
     address: { type: String },
     area: { type: Number },
     state: { type: String },
     lga: { type: String },
     position: {
       longitude: { type: Number },
-      latittude: { type: Number },
-    },
-    image: { type: String },
+      latitude: { type: Number },
+    }
   },
   gate: {
     size: { type: Number },
     thickness: { type: String },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
   fence: {
     height: { type: Number },
-    parimeter: { type: Number },
+    perimeter: { type: Number },
     concreteWork: { type: Number },
     blockWork: { type: Number },
     formWork: { type: Number },
     reinforcement: { type: Number },
     rendering: { type: Number },
     barbWire: { type: Number },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum:damageArr
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
   path: {
     width: { type: Number },
     length: { type: Number },
     surfaceDressing: { type: Number },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      default:0,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
   road: {
     width: { type: Number },
     length: { type: Number },
     surfaceDressing: { type: Number },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
   driveWay: {
     width: { type: Number },
     length: { type: Number },
     surfaceDressing: { type: Number },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable", "Obsolete"],
+      enum: conditionArr,
     },
   },
   drainage: {
@@ -71,9 +110,16 @@ const siteSchema = new Schema({
     formWork: { type: Number },
     reinforcement: { type: Number },
     rendering: { type: Number },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
   electricity: {
@@ -82,9 +128,16 @@ const siteSchema = new Schema({
     source: { type: String ,
       enum: ["Public", "Generator", "Solar","Turbine"],
     },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
   water: {
@@ -92,12 +145,21 @@ const siteSchema = new Schema({
     source: { type: String ,
       enum: ["Public", "Borehole", "Well","Dam"],
     },
+    cost: {
+      type: Number,
+    },
+    damage: {
+      type: Number,
+      enum: damageArr,
+    },
     condition: {
       type: String,
-      enum: ["Working ", "Not Working", "Repairable","Obsolete"],
+      enum: conditionArr,
     },
   },
+  image:{type: String},
   createdAt: { type: Date, default: Date.now() },
+  updatedAt: { type: Date, default: Date.now() },
 });
 
 module.exports = mongoose.model("Site", siteSchema);

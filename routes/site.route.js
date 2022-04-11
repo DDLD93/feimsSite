@@ -44,13 +44,25 @@ module.exports = (express,UPLOADS)=>{
     }
   });
 
-  api.post("/", upload.single('image'),async(req,res)=>{
+  api.post("/", upload.single('image'), async(req,res)=>{
+    /*let data = null;
+    if(req.body.source){
+      data = JSON.parse(req.body.meta);
+      //console.log("REQUEST FROM WEB >>>>>>>>> ",data)
+    }else{
+      data = req.body.meta;
+      data = JSON.parse(data);
+      //console.log("REQUEST FROM PHONE >>>>>>>>> ",data)
+    }*/
+    
+
     let data = JSON.parse(req.body.meta);
-    console.log(data)
     let status = await siteCtrl.addSite(data, req.filePath);
     if(status.ok){
+      console.log("error >>> ",status.site);
       res.status(200).json(status.site);
     }else{
+      console.log("error >>> ",status.error);
       res.status(500).json(status.error);
     }
   });
