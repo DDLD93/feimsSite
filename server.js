@@ -16,6 +16,7 @@ app.use(express.json())
 // connecting to database 
 
 app.use("/api/site", require("./routes/site.route")(express,UPLOADS));
+app.use("/api/site/uploads/",express.static(UPLOADS))
 
 
 app.listen(port,()=>{

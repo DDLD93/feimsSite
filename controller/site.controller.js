@@ -24,7 +24,7 @@ class SiteController{
   async addSite(data, imagePath){
     try {
       data.image = imagePath;
-      const newSite = new Site(data);5
+      const newSite = new Site(data);
       const site = await newSite.save();
       return {ok:true, site};
     } catch (err) {
