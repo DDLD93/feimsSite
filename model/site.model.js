@@ -6,22 +6,22 @@ const damageArr=[0,25,50,75,100];
 
 const siteSchema = new Schema({
   basic: {
-    name: { type: String },
-    code: { type: String },
-    address: { type: String },
-    area: { type: Number },
-    state: { type: String },
-    lga: { type: String },
+    name: { type: String ,required: true },
+    code: { type: String,unique:true,index:true},
+    address: { type: String,required: true },
+    area: { type: Number,required: true },
+    state: { type: String,required: true },
+    lga: { type: String,required: true },
     position: {
       longitude: { type: Number },
       latitude: { type: Number },
-    }
+    },required: true
   },
   gate: {
-    size: { type: Number },
-    thickness: { type: String },
+    size: { type: Number,required: true },
+    thickness: { type: String,required: true },
     cost: {
-      type: Number,
+      type: Number,default:0
     },
     damage: {
       type: Number,
@@ -36,13 +36,13 @@ const siteSchema = new Schema({
     height: { type: Number },
     perimeter: { type: Number },
     concreteWork: { type: Number },
-    blockWork: { type: Number },
+    blockWork: { type: Number},
     formWork: { type: Number },
     reinforcement: { type: Number },
     rendering: { type: Number },
     barbWire: { type: Number },
     cost: {
-      type: Number,
+      type: Number,default:0
     },
     damage: {
       type: Number,
@@ -58,7 +58,7 @@ const siteSchema = new Schema({
     length: { type: Number },
     surfaceDressing: { type: Number },
     cost: {
-      type: Number,
+      type: Number,default:0
     },
     damage: {
       type: Number,
@@ -75,7 +75,7 @@ const siteSchema = new Schema({
     length: { type: Number },
     surfaceDressing: { type: Number },
     cost: {
-      type: Number,
+      type: Number,default:0
     },
     damage: {
       type: Number,
@@ -129,7 +129,7 @@ const siteSchema = new Schema({
       enum: ["Public", "Generator", "Solar","Turbine"],
     },
     cost: {
-      type: Number,
+      type: Number,default:0
     },
     damage: {
       type: Number,
@@ -146,7 +146,7 @@ const siteSchema = new Schema({
       enum: ["Public", "Borehole", "Well","Dam"],
     },
     cost: {
-      type: Number,
+      type: Number,default:0
     },
     damage: {
       type: Number,
@@ -157,7 +157,8 @@ const siteSchema = new Schema({
       enum: conditionArr,
     },
   },
-  image:{type: String},
+  image:{type: String,required:true},
+
   createdAt: { type: Date, default: Date.now() },
   updatedAt: { type: Date, default: Date.now() },
 });
